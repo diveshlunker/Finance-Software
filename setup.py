@@ -1,4 +1,7 @@
 #--------------------------------------Finance Software ------------------------------------
+#---Developer - N.Divesh
+#---Licenced Software
+#---Copyright held by N.Divesh
 
 #---------------------------------------Importing Files-------------------------------------
 import tkinter as tk
@@ -151,7 +154,7 @@ class MainView(tk.Frame):
 
         #---------------------File Handler------------------------------
         
-        FileLoan.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        FileLoan.place(in_=container,x=0,y=0 ,relwidth=1, relheight=1)
         FileInvoice.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         FileSettle.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         FileBroker.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
@@ -213,3 +216,6 @@ if __name__ == "__main__":
     screen_height = root.winfo_screenheight()
     root.geometry(str(screen_width)+"x"+str(screen_height))
     root.mainloop()
+
+#------------------------------------------------------------------------------------END----------------------------------------------------------------------------------------------------
+#----------------------------------------------------------Developer - N.Divesh------------------------------------------------------
