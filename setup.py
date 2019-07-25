@@ -7,8 +7,8 @@ from Files.File import *
 from Edits.Edit import *
 from Views.View import *
 from Reports.Report import *
-from Settings.setting import *
-from HelpDesk.help import *
+from Settings.Setting import *
+from HelpDesk.Help import *
 
 
 #----------------------------------Base of the software------------------------------------
@@ -48,64 +48,97 @@ class MainView(tk.Frame):
         #--------------------------Edits.edit invoked and functions called-----------------
         #----------------------------Edit option in menu bar-------------------------------
 
-        editMenu = Menu(menu)
+        EditChart = Chart(self)
+        EditLoanAmt = LoanAmt(self)
+        EditReceipts = Receipt(self)
+        EditBroker = Broker(self)
+        EditCashBrok = CashBrok(self)
+
+        editMenu = tk.Menu(menu)
         menu.add_cascade(label="Edit", menu=editMenu)
-        editMenu.add_command(label="Chart",command=doNothing)
-        editMenu.add_command(label="loan-amount",command=doNothing)
-        editMenu.add_command(label="Receipts",command=doNothing)
-        editMenu.add_command(label="Broker File",command=doNothing)
-        editMenu.add_command(label="Cash with broker",command=doNothing)
+        editMenu.add_command(label="Chart",command=EditChart.lift)
+        editMenu.add_command(label="loan-amount",command=EditLoanAmt.lift)
+        editMenu.add_command(label="Receipts",command=EditReceipts.lift)
+        editMenu.add_command(label="Broker File",command=EditBroker.lift)
+        editMenu.add_command(label="Cash with broker",command=EditCashBrok.lift)
         editMenu.add_separator()
-        editMenu.add_command(label="Exit", command=doNothing)
+        editMenu.add_command(label="Exit", command=p1.lift)
 
         #--------------------------Views.View invoked and functions called-----------------
         #----------------------------View option in menu bar-------------------------------
-        viewMenu = Menu(menu)
+
+        ViewMonthLoan = MonthLoan(self)
+        ViewEmi = Emi(self)
+        ViewPending = Pending(self)
+        ViewUpcoming = Upcoming(self)
+        ViewBrokInHand = BrokInHand(self)
+        ViewVehicles = Vehicles(self)
+        ViewRc = Rc(self)
+        ViewAllCust = AllCust(self)
+        
+        viewMenu = tk.Menu(menu)
         menu.add_cascade(label="View", menu=viewMenu)
-        viewMenu.add_command(label="Months Loan",command=doNothing)
-        viewMenu.add_command(label="EMI Paid",command=doNothing)
-        viewMenu.add_command(label="Dues-Pending",command=doNothing)
-        viewMenu.add_command(label="Upcoming Dues",command=doNothing)
-        viewMenu.add_command(label="Broker in hand cash",command=doNothing)
-        viewMenu.add_command(label="Vehicles List",command=doNothing)
-        viewMenu.add_command(label="Rc. No",command=doNothing)
-        viewMenu.add_command(label="All Customers",command=doNothing)
+        viewMenu.add_command(label="Months Loan",command=ViewMonthLoan.lift)
+        viewMenu.add_command(label="EMI Paid",command=ViewEmi.lift)
+        viewMenu.add_command(label="Dues-Pending",command=ViewPending.lift)
+        viewMenu.add_command(label="Upcoming Dues",command=ViewUpcoming.lift)
+        viewMenu.add_command(label="Broker in hand cash",command=ViewBrokInHand.lift)
+        viewMenu.add_command(label="Vehicles List",command=ViewVehicles.lift)
+        viewMenu.add_command(label="Rc. No",command=ViewRc.lift)
+        viewMenu.add_command(label="All Customers",command=ViewAllCust.lift)
         viewMenu.add_separator()
-        viewMenu.add_command(label="Exit", command=doNothing)
+        viewMenu.add_command(label="Exit", command=p1.lift)
 
         #--------------------------Reports.report invoked and functions called-----------------
-        #----------------------------Reports option in menu bar-------------------------------
-        reportMenu = Menu(menu)
+        #----------------------------Reports option in menu bar--------------------------------
+
+        ReportMonthly = Monthly(self)
+        ReportBroker = Broker(self)
+        ReportProfit = Profit(self)
+        ReportBulkRep = BulkRep(self)
+        
+        reportMenu = tk.Menu(menu)
         menu.add_cascade(label="Reports", menu=reportMenu)
-        reportMenu.add_command(label="Monthly Loans",command=doNothing)
-        reportMenu.add_command(label="Broker Wise",command=doNothing)
-        reportMenu.add_command(label="Profit of month",command=doNothing)
-        reportMenu.add_command(label="Bulk Report",command=doNothing)
+        reportMenu.add_command(label="Monthly Loans",command=ReportMonthly.lift)
+        reportMenu.add_command(label="Broker Wise",command=ReportBroker.lift)
+        reportMenu.add_command(label="Profit of month",command=ReportProfit.lift)
+        reportMenu.add_command(label="Bulk Report",command=ReportBulkRep.lift)
         reportMenu.add_separator()
-        reportMenu.add_command(label="Exit", command=doNothing)
+        reportMenu.add_command(label="Exit", command=p1.lift)
         
         #--------------------------Settings.Setting invoked and functions called-----------------
-        #----------------------------Settings option in menu bar-------------------------------
-        settingMenu = Menu(menu)
+        #----------------------------Settings option in menu bar---------------------------------
+
+        SettingUsername = Username(self)
+        SettingPassword = Password(self)
+        
+        settingMenu = tk.Menu(menu)
         menu.add_cascade(label="Settings", menu=settingMenu)
-        settingMenu.add_command(label="Change Username",command=doNothing)
-        settingMenu.add_command(label="Change Password",command=doNothing)
+        settingMenu.add_command(label="Change Username",command=SettingUsername.lift)
+        settingMenu.add_command(label="Change Password",command=SettingPassword.lift)
         settingMenu.add_separator()
-        settingMenu.add_command(label="Exit", command=doNothing)
+        settingMenu.add_command(label="Exit", command=p1.lift)
         
         #--------------------------HelpDesk.help invoked and functions called-----------------
-        #----------------------------Help option in menu bar---------------------------------
-        helpMenu = Menu(menu)
+        #----------------------------Help option in menu bar----------------------------------
+
+        HelpAbout = About(self)
+        HelpFeatures = Features(self)
+        HelpLicence = Licence(self)
+        HelpTerms = Terms(self)
+        HelpContribute = Contribute(self)
+        HelpStar = Star(self)
+        
+        helpMenu = tk.Menu(menu)
         menu.add_cascade(label="Help", menu=helpMenu)
-        helpMenu.add_command(label="About",command=doNothing)
-        helpMenu.add_command(label="Features",command=doNothing)
-        helpMenu.add_command(label="Licence",command=doNothing)
-        helpMenu.add_command(label="Terms and Conditions",command=doNothing)
-        helpMenu.add_command(label="Donate",command=doNothing)
-        helpMenu.add_command(label="Contribute",command=doNothing)
-        helpMenu.add_command(label="Star",command=doNothing)
+        helpMenu.add_command(label="About",command=HelpAbout.lift)
+        helpMenu.add_command(label="Features",command=HelpFeatures.lift)
+        helpMenu.add_command(label="Licence",command=HelpLicence.lift)
+        helpMenu.add_command(label="Terms and Conditions",command=HelpTerms.lift)
+        helpMenu.add_command(label="Contribute",command=HelpContribute.lift)
+        helpMenu.add_command(label="Star",command=HelpStar.lift)
         helpMenu.add_separator()
-        helpMenu.add_command(label="Exit", command=doNothing)
+        helpMenu.add_command(label="Exit", command=p1.lift)
 
 
         #----------------Creating containers and setting up the design---------------------
@@ -115,14 +148,56 @@ class MainView(tk.Frame):
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        #---------------------File Handler------------------------------
+        
         FileLoan.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         FileInvoice.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         FileSettle.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         FileBroker.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         FileChart.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        #---------------------Edit Handler-------------------------------
+         
+        EditChart.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        EditLoanAmt.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        EditReceipts.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        EditBroker.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        EditCashBrok.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        #-----------------------View Handler------------------------------
+
+        ViewMonthLoan.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewEmi.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewPending.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewUpcoming.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewBrokInHand.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewVehicles.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewRc.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ViewAllCust.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        #---------------------------Report Handler-------------------------
         
+        ReportMonthly.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ReportBroker.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ReportProfit.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        ReportBulkRep.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
+        #-------------------------Settings Handler--------------------------
 
+        SettingUsername.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        SettingPassword.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        #-------------------------Help Handler-------------------------------
+
+        HelpAbout.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        HelpFeatures.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        HelpLicence.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        HelpTerms.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        HelpContribute.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        HelpStar.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        #-----------------------------Opening Screen--------------------------
 
         p1.show()
         
