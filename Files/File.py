@@ -1,5 +1,10 @@
 import tkinter as tk
 import json
+from Files.NewInvoices import NewInvoice
+from Files.FileChart import CreateChart
+from Files.SettleFile import Settle
+from Files.FileBroker import NewBroker
+
 
 class File(tk.Frame):
     def __init__(self, *args):
@@ -223,9 +228,9 @@ class NewLoan(File):
 
     def savedata(self):
 
+        #--------------------------------------------------Getting all the entries and saving in a particular variable and thereby saving in database---------------------------------------
         
-        
-        self.tke11.set(self.e11.get())     # get entry widget content and store it in tk_string variable
+        self.tke11.set(self.e11.get())     
         k11=self.tke11.get()
         self.d["custname"]=k11
 
@@ -314,18 +319,50 @@ class NewLoan(File):
         k91 = self.tke91.get()
         self.d["rcno"]=k91
         
-        
+        #-------------------------------------Writing json file by converting it from dictionary to a file--------------------------------------------
         self.FileOpen.write(json.dumps(self.d))
         self.FileOpen.write("\n")
         self.FileOpen.close()
+        self.canceldata()
         self.e11.delete(0, 'end')
         self.popupmsg("Data Saved !!")
 
+        #---------------------------Data successfully saved-----------------------------------
+
 
     def canceldata(self):
-        self.e11.delete(0, 'end')
-        print("cancelled")
 
+        
+
+        #----------------------Clearing all the entries---------------------------
+        self.e11.delete(0, 'end')
+        self.e12.delete(0, 'end')
+        self.e13.delete(0, 'end')
+        self.e21.delete(0, 'end')
+        self.e22.delete(0, 'end')
+        self.e31.delete(0, 'end')
+        self.e32.delete(0, 'end')
+        self.e33.delete(0, 'end')
+        self.e41.delete(0, 'end')
+        self.e42.delete(0, 'end')
+        self.e51.delete(0, 'end')
+        self.e52.delete(0, 'end')
+        self.e53.delete(0, 'end')
+        self.e61.delete(0, 'end')
+        self.e62.delete(0, 'end')
+        self.e63.delete(0, 'end')
+        self.e71.delete(0, 'end')
+        self.e72.delete(0, 'end')
+        self.e73.delete(0, 'end')
+        self.e81.delete(0, 'end')
+        self.e82.delete(0, 'end')
+        self.e91.delete(0, 'end')
+
+        #----------------------------since the file was closed, reopening the file------------------------------------
+        
+        print("cancelled")
+        self.FileOpen = open("loanfile.txt","a")
+        
     def popupmsg(self,msg):
         LARGE_FONT= ("Verdana", 12)
         NORM_FONT = ("Helvetica", 10)
@@ -339,32 +376,11 @@ class NewLoan(File):
         popup.mainloop()
 
         
-        
 
 
 
-class NewInvoice(File):
-   def __init__(self, *args):
-       File.__init__(self, *args)
-       label = tk.Label(self, text="Invoice")
-       label.pack(side="top", fill="both", expand=True)
-
-class Settle(File):
-   def __init__(self, *args):
-       File.__init__(self, *args)
-       label = tk.Label(self, text="Settle")
-       label.pack(side="top", fill="both", expand=True)
 
 
-class NewBroker(File):
-   def __init__(self, *args):
-       File.__init__(self, *args)
-       label = tk.Label(self, text="New Broker")
-       label.pack(side="top", fill="both", expand=True)
 
 
-class CreateChart(File):
-   def __init__(self, *args):
-       File.__init__(self, *args)
-       label = tk.Label(self, text="Create Chart")
-       label.pack(side="top", fill="both", expand=True)
+
