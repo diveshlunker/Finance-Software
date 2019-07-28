@@ -4,6 +4,8 @@ from Files.NewInvoices import NewInvoice
 from Files.FileChart import CreateChart
 from Files.SettleFile import Settle
 from Files.FileBroker import NewBroker
+import uuid
+import os
 
 
 class File(tk.Frame):
@@ -212,6 +214,8 @@ class NewLoan(File):
         self.tke91 = tk.StringVar()  # create tk string variable
         self.tke91.set('Nothing is done yet!')
 
+        
+
         #------------------------------Buttons---------------------------------
         self.buttonSave = tk.Button(self, text="SAVE", fg="green",width=20)
         self.buttonSave.grid(row=11,column=3)
@@ -222,7 +226,9 @@ class NewLoan(File):
         self.buttonCancel.config(command = self.canceldata)
 
         #------------------------Opening File in append mode--------------------
-        self.FileOpen = open("loanfile.txt","a")
+        self.FileOpen = open("Database/LoanFile/loanfile.txt","a+") 
+        
+        self.CustToUid = open("Database/CustToUid.txt","a+")
         self.d={}
         
 
@@ -318,7 +324,17 @@ class NewLoan(File):
         self.tke91.set(self.e91.get())
         k91 = self.tke91.get()
         self.d["rcno"]=k91
-        
+
+        #-----------------------------Creating unique id for all customers--------------------
+        self.s=""
+        self.uid = uuid.uuid1()
+        self.s+=str(self.uid)
+        print(self.s)
+
+        self.CustFile = open("Database/Customers/"+self.s+".txt","a+")
+        #--------------------------Creating charts-------------------------------------
+        self.CustFile.write(str(k11))
+        self.CustFile.close()
         #-------------------------------------Writing json file by converting it from dictionary to a file--------------------------------------------
         self.FileOpen.write(json.dumps(self.d))
         self.FileOpen.write("\n")
@@ -328,6 +344,9 @@ class NewLoan(File):
         self.popupmsg("Data Saved !!")
 
         #---------------------------Data successfully saved-----------------------------------
+
+        
+        
 
 
     def canceldata(self):
