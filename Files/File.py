@@ -18,6 +18,7 @@ class NewLoan(File):
     def __init__(self, *args):
         File.__init__(self, *args)
 
+
         self.labeljName = tk.Label(self, text="New Loan",bg="black",fg="white",height=4)
         self.labeljName.grid(row=0,column=3,padx=(200,0))
 
@@ -228,7 +229,6 @@ class NewLoan(File):
         #------------------------Opening File in append mode--------------------
         self.FileOpen = open("Database/LoanFile/loanfile.txt","a+") 
         
-        self.CustToUid = open("Database/CustToUid.txt","a+")
         self.d={}
         
 
@@ -237,104 +237,101 @@ class NewLoan(File):
         #--------------------------------------------------Getting all the entries and saving in a particular variable and thereby saving in database---------------------------------------
         
         self.tke11.set(self.e11.get())     
-        k11=self.tke11.get()
-        self.d["custname"]=k11
+        self.k11=self.tke11.get()
+        self.d["custname"]=self.k11
 
         self.tke12.set(self.e12.get())
-        k12 = self.tke12.get()
-        self.d["custfname"]=k12
+        self.k12 = self.tke12.get()
+        self.d["custfname"]=self.k12
 
         
         self.tke13.set(self.e13.get())
-        k13 = self.tke13.get()
-        self.d["custphno"]=k13
+        self.k13 = self.tke13.get()
+        self.d["custphno"]=self.k13
         
         self.tke21.set(self.e21.get())
-        k21 = self.tke21.get()
-        self.d["add1"]=k21
+        self.k21 = self.tke21.get()
+        self.d["add1"]=self.k21
         
         self.tke22.set(self.e22.get())
-        k22 = self.tke22.get()
-        self.d["add2"]=k22
+        self.k22 = self.tke22.get()
+        self.d["add2"]=self.k22
         
         self.tke31.set(self.e31.get())
-        k31 = self.tke31.get()
-        self.d["gauname"]=k31
+        self.k31 = self.tke31.get()
+        self.d["gauname"]=self.k31
         
         self.tke32.set(self.e32.get())
-        k32 = self.tke32.get()
-        self.d["gaufname"]=k32
+        self.k32 = self.tke32.get()
+        self.d["gaufname"]=self.k32
         
         self.tke33.set(self.e33.get())
-        k33 = self.tke33.get()
-        self.d["gauphno"]=k33
+        self.k33 = self.tke33.get()
+        self.d["gauphno"]=self.k33
         
         self.tke41.set(self.e41.get())
-        k41 = self.tke41.get()
-        self.d["gadd1"]=k41
+        self.k41 = self.tke41.get()
+        self.d["gadd1"]=self.k41
         
         self.tke42.set(self.e42.get())
-        k42 = self.tke42.get()
-        self.d["gadd2"]=k42
+        self.k42 = self.tke42.get()
+        self.d["gadd2"]=self.k42
         
         self.tke53.set(self.e53.get())
-        k53 = self.tke53.get()
-        self.d["broker"]=k53
+        self.k53 = self.tke53.get()
+        self.d["broker"]=self.k53
         
         self.tke52.set(self.e52.get())
-        k52 = self.tke52.get()
-        self.d["amount"]=k52
+        self.k52 = self.tke52.get()
+        self.d["amount"]=self.k52
         
         self.tke51.set(self.e51.get())
-        k51 = self.tke51.get()
-        self.d["ldate"]=k51
+        self.k51 = self.tke51.get()
+        self.d["ldate"]=self.k51
+
         
         self.tke61.set(self.e61.get())
-        k61 = self.tke61.get()
-        self.d["make"]=k61
+        self.k61 = self.tke61.get()
+        self.d["make"]=self.k61
         
         self.tke62.set(self.e62.get())
-        k62 = self.tke62.get()
-        self.d["model"]=k62
+        self.k62 = self.tke62.get()
+        self.d["model"]=self.k62
         
         self.tke63.set(self.e63.get())
-        k63 = self.tke63.get()
-        self.d["vehno"]=k63
+        self.k63 = self.tke63.get()
+        self.d["vehno"]=self.k63
         
         self.tke71.set(self.e71.get())
-        k71 = self.tke71.get()
-        self.d["cmonths"]=k71
-        
+        self.k71 = self.tke71.get()
+        self.d["cmonths"]=self.k71
+
         self.tke72.set(self.e72.get())
-        k72 = self.tke72.get()
-        self.d["irate"]=k72
+        self.k72 = self.tke72.get()
+        self.d["irate"]=self.k72
         
         self.tke73.set(self.e73.get())
-        k73 = self.tke73.get()
-        self.d["deposit"]=k73
+        self.k73 = self.tke73.get()
+        self.d["deposit"]=self.k73
         
         self.tke81.set(self.e81.get())
-        k81 = self.tke81.get()
-        self.d["nodocs"]=k81
+        self.k81 = self.tke81.get()
+        self.d["nodocs"]=self.k81
 
         self.tke82.set(self.e82.get())
-        k82 = self.tke82.get()
-        self.d["docslist"]=k82
+        self.k82 = self.tke82.get()
+        self.d["docslist"]=self.k82
         
         self.tke91.set(self.e91.get())
-        k91 = self.tke91.get()
-        self.d["rcno"]=k91
+        self.k91 = self.tke91.get()
+        self.d["rcno"]=self.k91
 
-        #-----------------------------Creating unique id for all customers--------------------
-        self.s=""
-        self.uid = uuid.uuid1()
-        self.s+=str(self.uid)
-        print(self.s)
+        
 
-        self.CustFile = open("Database/Customers/"+self.s+".txt","a+")
-        #--------------------------Creating charts-------------------------------------
-        self.CustFile.write(str(k11))
-        self.CustFile.close()
+        self.fileOpn()
+
+        
+        
         #-------------------------------------Writing json file by converting it from dictionary to a file--------------------------------------------
         self.FileOpen.write(json.dumps(self.d))
         self.FileOpen.write("\n")
@@ -343,8 +340,80 @@ class NewLoan(File):
         self.e11.delete(0, 'end')
         self.popupmsg("Data Saved !!")
 
-        #---------------------------Data successfully saved-----------------------------------
+        #---------------------------Data successfully saved---------------------------------
 
+
+    def fileOpn(self):
+
+        self.months = ["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"]
+        self.d2={}
+
+        #------------------------------Dates segeregated as per date,month,year for easy opn-----------------------------------------
+        self.datek51 = self.k51.split(".")
+        self.k51month = self.datek51[1]
+        self.k51date = self.datek51[0]
+        self.k51year = self.datek51[2]
+
+        #----------------------------------Empty list declared------------------------------------
+
+        self.l=[]
+
+        #--------------------creating chart months-------------------------
+        self.startmonth = int(self.k51month)%12+1
+        self.l.append(self.startmonth)
+        self.tempmonth = int(self.startmonth)
+        self.totalmonths = int(self.k71)
+        self.i=self.totalmonths
+        while(self.i>1):
+            self.l.append(self.tempmonth%12+1)
+            self.tempmonth+=1
+            self.i-=1
+
+        #----------------------------------------------------------------------------------
+
+        self.l2=[]
+        self.upcomingdueyear=int(self.k51year)
+        self.upcomingduemonth = int(self.k51month)+1
+        if(self.upcomingduemonth>12):
+            self.upcomingduemonth%12
+            self.upcomingdueyear+=1
+        self.upcomingduedate = int(self.k51date)
+
+        self.l2.append(self.upcomingduedate)
+        self.l2.append(self.upcomingduemonth)
+        self.l2.append(self.upcomingdueyear)
+
+        print(self.l2)
+        print(self.l)
+        self.d2["Name"]=self.k11
+        self.d2["vehno"]=self.k63
+        self.d2["chartMonths"]=self.l
+        self.d2["upcomingdue"]=self.l2
+
+        #-----------------------------Creating unique id for all customers--------------------
+        self.unique=""
+        self.uid = uuid.uuid1()
+        self.unique+=str(self.uid)
+        print(self.unique)
+
+        self.CustFile = open("Database/Customers/"+self.unique+".txt","a+")
+        self.CustToUid = open("Database/CustToUid.txt","a+")
+
+        #--------------------------Creating charts-------------------------------------
+        self.CustFile.write(json.dumps(self.d2))
+        self.CustFile.write("/n")
+        self.CustFile.close()
+
+        #---------------------------Maintaining customer record with their unique chart numbers---------------------------
+        self.d3={}
+        self.d3["uid"]=self.unique
+        self.d3["vehno"]=self.k63
+
+        self.CustToUid.write(json.dumps(self.d3))
+        self.CustFile.write("/n")
+
+        self.CustToUid.close()
+        
         
         
 
@@ -352,7 +421,7 @@ class NewLoan(File):
     def canceldata(self):
 
         
-
+        print(self.k11)
         #----------------------Clearing all the entries---------------------------
         self.e11.delete(0, 'end')
         self.e12.delete(0, 'end')
@@ -380,7 +449,7 @@ class NewLoan(File):
         #----------------------------since the file was closed, reopening the file------------------------------------
         
         print("cancelled")
-        self.FileOpen = open("loanfile.txt","a")
+        self.FileOpen = open("Database/LoanFile/loanfile.txt","a")
         
     def popupmsg(self,msg):
         LARGE_FONT= ("Verdana", 12)
