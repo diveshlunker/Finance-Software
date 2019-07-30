@@ -389,6 +389,7 @@ class NewLoan(File):
         self.d2["vehno"]=self.k63
         self.d2["chartMonths"]=self.l
         self.d2["upcomingdue"]=self.l2
+        self.d2["ChartStatus"]="Ongoing"
 
         #-----------------------------Creating unique id for all customers--------------------
         self.unique=""
@@ -410,7 +411,7 @@ class NewLoan(File):
         self.d3["vehno"]=self.k63
 
         self.CustToUid.write(json.dumps(self.d3))
-        self.CustFile.write("/n")
+        self.CustToUid.write("/n")
 
         self.CustToUid.close()
         
