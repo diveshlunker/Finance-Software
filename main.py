@@ -4,7 +4,7 @@ def doNothing():
 
 #---------------------------Initializing----------------------------------------
 root =Tk()
-
+root.configure(background='#303030')
 def clear():
     list = root.grid_slaves()
     print(list)

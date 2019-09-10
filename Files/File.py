@@ -6,11 +6,12 @@ from Files.SettleFile import Settle
 from Files.FileBroker import NewBroker
 import uuid
 import os
+from openpyxl import *
 
 
 class File(tk.Frame):
     def __init__(self, *args):
-        tk.Frame.__init__(self, *args,bg="black")
+        tk.Frame.__init__(self, *args,bg="#101010")
     def show(self):
         self.lift()
             
@@ -18,12 +19,64 @@ class NewLoan(File):
     def __init__(self, *args):
         File.__init__(self, *args)
 
+        #--------------------------Excel self.sheet Creation------------------------------------
+        self.wb = load_workbook('C:\\Users\\Divesh\\Desktop\\newLoan.xlsx')
+        self.sheet = self.wb.active
 
-        self.labeljName = tk.Label(self, text="New Loan",bg="black",fg="white",height=4)
+        self.sheet.column_dimensions['A'].width = 30
+        self.sheet.column_dimensions['B'].width = 30
+        self.sheet.column_dimensions['C'].width = 20
+        self.sheet.column_dimensions['D'].width = 50
+        self.sheet.column_dimensions['E'].width = 30
+        self.sheet.column_dimensions['F'].width = 30
+        self.sheet.column_dimensions['G'].width = 20
+        self.sheet.column_dimensions['H'].width = 50
+        self.sheet.column_dimensions['I'].width = 20
+        self.sheet.column_dimensions['J'].width = 20
+        self.sheet.column_dimensions['K'].width = 30
+        self.sheet.column_dimensions['L'].width = 15
+        self.sheet.column_dimensions['M'].width = 15
+        self.sheet.column_dimensions['N'].width = 20
+        self.sheet.column_dimensions['O'].width = 20
+        self.sheet.column_dimensions['P'].width = 20
+        self.sheet.column_dimensions['Q'].width = 20
+        self.sheet.column_dimensions['R'].width = 20
+        self.sheet.column_dimensions['S'].width = 20
+        
+
+        # write given data to an excel spreadself.sheet 
+        # at particular location 
+        self.sheet.cell(row=1, column=1).value = "Customer Name"
+        self.sheet.cell(row=1, column=2).value = "Father/Husbands Name"
+        self.sheet.cell(row=1, column=3).value = "Phone Number"
+        self.sheet.cell(row=1, column=4).value = "Address"
+        self.sheet.cell(row=1, column=5).value = "Gaurentee Name"
+        self.sheet.cell(row=1, column=6).value = "Gaurentee Fathers Name"
+        self.sheet.cell(row=1, column=7).value = "Gaurentee Number"
+        self.sheet.cell(row=1, column=8).value = "Gaurentee Address"
+        self.sheet.cell(row=1, column=9).value = "Loan Date"
+        self.sheet.cell(row=1, column=10).value = "Amount"
+        self.sheet.cell(row=1, column=11).value = "Broker"
+        self.sheet.cell(row=1, column=12).value = "Make"
+        self.sheet.cell(row=1, column=13).value = "Model"
+        self.sheet.cell(row=1, column=14).value = "Vehicle Number"
+        self.sheet.cell(row=1, column=15).value = "Chart Months"
+        self.sheet.cell(row=1, column=16).value = "Interest Rate"
+        self.sheet.cell(row=1, column=17).value = "Deposit"
+        self.sheet.cell(row=1, column=18).value = "Number of Documents"
+        self.sheet.cell(row=1, column=19).value = "List of Documents"
+        self.sheet.cell(row=1, column=20).value = "RC Number"
+        self.sheet.cell(row=1, column=21).value = "Unique ID"
+        
+        
+
+
+
+        self.labeljName = tk.Label(self, text="New Loan",bg="#303030",fg="white",height=4)
         self.labeljName.grid(row=0,column=3,padx=(200,0))
 
         #--------------------Line 1 - 3 inputs - name,fname,phno---------------------------
-        self.labelName = tk.Label(self, text="Name:-",bg="black",fg="white",height=4)
+        self.labelName = tk.Label(self, text="Name:-",bg="#303030",fg="white",height=4)
         self.labelName.grid(row=1,column=1,padx=(200,0))
         self.e11 = tk.Entry(self,width=30)
         self.e11.grid(row=1,column=2)
@@ -32,9 +85,9 @@ class NewLoan(File):
         self.tke11.set('Nothing is done yet!')
 
         
-        self.labelFname = tk.Label(self, text="Fathers/Husbands Name:-",bg="black",fg="white")
+        self.labelFname = tk.Label(self, text="Fathers/Husbands Name:-",bg="#303030",fg="white")
         self.labelFname.grid(row=1,column=3,padx=(100,0))
-        self.e12 = tk.Entry(self,width=30)
+        self.e12 = tk.Entry(self,width=40)
         self.e12.grid(row=1,column=4)
 
         self.tke12 = tk.StringVar()  # create tk string variable
@@ -232,6 +285,9 @@ class NewLoan(File):
         self.d={}
         
 
+    
+        
+
     def savedata(self):
 
         #--------------------------------------------------Getting all the entries and saving in a particular variable and thereby saving in database---------------------------------------
@@ -326,6 +382,37 @@ class NewLoan(File):
         self.k91 = self.tke91.get()
         self.d["rcno"]=self.k91
 
+        current_row = self.sheet.max_row 
+        current_column = self.sheet.max_column
+
+
+
+        
+
+        self.sheet.cell(row=current_row + 1, column=1).value = self.k11
+        self.sheet.cell(row=current_row + 1, column=2).value = self.k12
+        self.sheet.cell(row=current_row + 1, column=3).value = self.k13
+        self.sheet.cell(row=current_row + 1, column=4).value = self.k21
+        self.sheet.cell(row=current_row + 1, column=5).value = self.k31
+        self.sheet.cell(row=current_row + 1, column=6).value = self.k32
+        self.sheet.cell(row=current_row + 1, column=7).value = self.k33
+        self.sheet.cell(row=current_row + 1, column=8).value = self.k41
+        self.sheet.cell(row=current_row + 1, column=9).value = self.k51
+        self.sheet.cell(row=current_row + 1, column=10).value = self.k52
+        self.sheet.cell(row=current_row + 1, column=11).value = self.k53
+
+        self.sheet.cell(row=current_row + 1, column=12).value = self.k61
+        self.sheet.cell(row=current_row + 1, column=13).value = self.k62
+        self.sheet.cell(row=current_row + 1, column=14).value = self.k63
+        self.sheet.cell(row=current_row + 1, column=15).value = self.k71
+        self.sheet.cell(row=current_row + 1, column=16).value = self.k72
+        self.sheet.cell(row=current_row + 1, column=17).value = self.k73
+        self.sheet.cell(row=current_row + 1, column=18).value = self.k81
+        self.sheet.cell(row=current_row + 1, column=19).value = self.k82
+        self.sheet.cell(row=current_row + 1, column=20).value = self.k91
+
+        self.wb.save('C:\\Users\\Divesh\\Desktop\\newLoan.xlsx') 
+
         
 
         self.fileOpn()
@@ -399,6 +486,12 @@ class NewLoan(File):
 
         self.CustFile = open("Database/Customers/"+self.unique+".txt","a+")
         self.CustToUid = open("Database/CustToUid.txt","a+")
+
+        
+        current_row = self.sheet.max_row 
+        current_column = self.sheet.max_column
+        self.sheet.cell(row=current_row + 1, column=21).value = self.unique
+
 
         #--------------------------Creating charts-------------------------------------
         self.CustFile.write(json.dumps(self.d2))

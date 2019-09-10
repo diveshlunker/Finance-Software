@@ -12,7 +12,7 @@ from Views.View import *
 from Reports.Report import *
 from Settings.Setting import *
 from HelpDesk.Help import *
-
+from openpyxl import *
 
 #----------------------------------Base of the software------------------------------------
 class MainView(tk.Frame):
@@ -209,6 +209,7 @@ class MainView(tk.Frame):
 #-------------------------Making the layout of software and calling MainView----------------
 if __name__ == "__main__":
     root = tk.Tk()
+    root.configure(background='#303030')
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
     main.config(background='#2b2b2b')
