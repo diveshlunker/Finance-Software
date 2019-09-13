@@ -43,7 +43,6 @@ class MainView(tk.Frame):
         subMenu.add_command(label="New Invoice",command=FileInvoice.lift)
         subMenu.add_command(label="Settle Loan",command=FileSettle.lift)
         subMenu.add_command(label="New Broker",command=FileBroker.lift)
-        subMenu.add_command(label="Create Chart",command=FileChart.lift)
         
         subMenu.add_separator()
         subMenu.add_command(label="Exit", command=p1.lift)

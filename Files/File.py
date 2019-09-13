@@ -7,6 +7,7 @@ from Files.FileBroker import NewBroker
 import uuid
 import os
 from openpyxl import *
+import time
 
 
 class File(tk.Frame):
@@ -14,13 +15,15 @@ class File(tk.Frame):
         tk.Frame.__init__(self, *args,bg="#101010")
     def show(self):
         self.lift()
+
+
             
 class NewLoan(File):
     def __init__(self, *args):
         File.__init__(self, *args)
 
         #--------------------------Excel self.sheet Creation------------------------------------
-        self.wb = load_workbook('C:\\Users\\Divesh\\Desktop\\newLoan.xlsx')
+        self.wb = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
         self.sheet = self.wb.active
 
         self.sheet.column_dimensions['A'].width = 30
@@ -382,6 +385,8 @@ class NewLoan(File):
         self.k91 = self.tke91.get()
         self.d["rcno"]=self.k91
 
+        #--------------------------------------------------saving data in excel sheet names newLoan----------------------------------------
+
         current_row = self.sheet.max_row 
         current_column = self.sheet.max_column
 
@@ -411,7 +416,7 @@ class NewLoan(File):
         self.sheet.cell(row=current_row + 1, column=19).value = self.k82
         self.sheet.cell(row=current_row + 1, column=20).value = self.k91
 
-        self.wb.save('C:\\Users\\Divesh\\Desktop\\newLoan.xlsx') 
+        self.wb.save('G:\\Finance software\\Database\\newLoan.xlsx') 
 
         
 
@@ -490,7 +495,10 @@ class NewLoan(File):
         
         current_row = self.sheet.max_row 
         current_column = self.sheet.max_column
-        self.sheet.cell(row=current_row + 1, column=21).value = self.unique
+        self.sheet.cell(row=current_row, column=21).value = self.unique
+
+        self.wb.save('G:\\Finance software\\Database\\newLoan.xlsx') 
+
 
 
         #--------------------------Creating charts-------------------------------------
@@ -544,6 +552,8 @@ class NewLoan(File):
         
         print("cancelled")
         self.FileOpen = open("Database/LoanFile/loanfile.txt","a")
+
+
         
     def popupmsg(self,msg):
         LARGE_FONT= ("Verdana", 12)
@@ -557,6 +567,109 @@ class NewLoan(File):
         B1.pack()
         popup.mainloop()
 
+
+
+
+    def brokerFileSetup(self):
+        self.wb = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+        self.sheet_broker = self.wb.active
+
+        self.sheet_broker.column_dimensions['A'].width = 30
+        self.sheet_broker.column_dimensions['B'].width = 30
+        self.sheet_broker.column_dimensions['C'].width = 30
+        self.sheet_broker.column_dimensions['D'].width = 30
+        self.sheet_broker.column_dimensions['E'].width = 30
+        self.sheet_broker.column_dimensions['F'].width = 30
+        self.sheet_broker.column_dimensions['G'].width = 30
+        self.sheet_broker.column_dimensions['H'].width = 30
+        self.sheet_broker.column_dimensions['I'].width = 30
+        
+        
+
+        # write given data to an excel spreadself.sheet 
+        # at particular location 
+        self.sheet_broker.cell(row=1, column=1).value = "Broker Name"
+        self.sheet_broker.cell(row=1, column=2).value = "Amount In Hand"
+        self.sheet_broker.cell(row=1, column=3).value = "No. of Customers"
+        self.sheet_broker.cell(row=1, column=4).value = "Settled Customers"
+        self.sheet_broker.cell(row=1, column=5).value = "Total Customers"
+        self.sheet_broker.cell(row=1, column=6).value = "Loan Given"
+        self.sheet_broker.cell(row=1, column=7).value = "Loan Settled"
+        self.sheet_broker.cell(row=1, column=8).value = "Loan till date"
+        self.sheet_broker.cell(row=1, column=9).value = "Broker Address"
+
+
+
+        
+    def brokerData(self,brokername,loan_amount):
+        self.wb = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+        self.sheet_broker = self.wb.active
+
+        maxcol = sheet.max_column
+        maxrow = sheet.max_row
+
+        count = 0
+        
+        for i in range(1,maxrow+1):
+            cell_obj = self.sheet_broker.cell(row=i,col=1)
+            if(cell_obj==brokername):
+                self.sheet_broker.cell(row=i, column=2).value -=loan_amount
+                self.sheet_broker.cell(row=i, column=3).value +=1
+                self.sheet_broker.cell(row=i, column=5).value +=1
+                self.sheet_broker.cell(row=i, column=6).value +=loan_amount
+                self.sheet_broker.cell(row=i, column=8).value +=loan_amount
+                count = 1
+        if(count == 0):
+            print("No such Borker Found!!")
+                
+                
+
+
+        
+    def newChart(self):
+        d = 1
+        
+
+
+
+    def monthDataFileSetup(self,monthYear):
+        d = 1
+
+        
+        
+
+
+        
+    def monthDataEdit(self,month,year):
+        self.wbMonthDataCheck = load_workbook('G:\\Finance software\\Database\\AvailableMonthData.xlsx')
+        self.CheckSheet = self.wbMonthDataCheck.active
+
+        maxrow = CheckSheet.max_row
+        count = 0
+
+        monthYear = month+str(year)
+
+        for i in range(1,maxrow+1):
+            cell_obj_month = self.CheckSheet.cell(row=i,col=1)
+            cell_obj_year = self.CheckSheet.cell(row=i,col=2)
+
+            if(cell_obj_year==year and cell_obj_month == month):
+                count = 1
+                break
+            
+        if(count==1):
+            self.wbMonthData = load_workbook('G:\\Finance software\\Database\\MonthReports\\',monthYear,'.xlsx')
+
+
+        else:
+            self.CheckSheet.cell(row=maxrow+1, column=1).value = month
+            self.CheckSheet.cell(row=maxrow+1,column=2).value = year
+
+
+            #----------------creating new file by name of monthYear--------------------------
+            monthDataFileSetup(monthYear)
+
+            
         
 
 
