@@ -243,6 +243,7 @@ class NewLoan(File):
         self.tke73 = tk.StringVar()  # create tk string variable
         self.tke73.set('Nothing is done yet!')
 
+
         #----------------------------Line 8 - Documents----------------------------
 
         self.labelNoDocs = tk.Label(self, text="No.of Docs:-",bg="black",fg="white",height=4)
@@ -286,7 +287,7 @@ class NewLoan(File):
         self.FileOpen = open("Database/LoanFile/loanfile.txt","a+") 
         
         self.d={}
-        
+
 
     
         
@@ -467,16 +468,38 @@ class NewLoan(File):
         self.upcomingdueyear=int(self.k51year)
         self.upcomingduemonth = int(self.k51month)+1
         if(self.upcomingduemonth>12):
-            self.upcomingduemonth%12
+            self.upcomingduemonth%=12
             self.upcomingdueyear+=1
-        self.upcomingduedate = int(self.k51date)
 
+        self.upcomingduedate = int(self.k51date)
         self.l2.append(self.upcomingduedate)
         self.l2.append(self.upcomingduemonth)
         self.l2.append(self.upcomingdueyear)
 
+        
+        self.l3=[]
+        i = 0
+        self.upcomingdueyear=int(self.k51year)
+        self.upcomingduemonth = int(self.k51month)+1
+        while(len(self.l3)!=len(self.l)):
+            if(self.upcomingduemonth>12):
+                self.upcomingduemonth%=12
+                self.upcomingdueyear+=1
+
+            self.upcomingduedate = int(self.k51date)
+            self.l3.append([])
+            self.l3[i].append(self.upcomingduedate)
+            self.l3[i].append(self.upcomingduemonth)
+            self.l3[i].append(self.upcomingdueyear)
+            self.upcomingduemonth+=1
+            i+=1
+            
+
+        
+        
         print(self.l2)
         print(self.l)
+        print(self.l3)
         self.d2["Name"]=self.k11
         self.d2["vehno"]=self.k63
         self.d2["chartMonths"]=self.l
@@ -497,7 +520,8 @@ class NewLoan(File):
         current_column = self.sheet.max_column
         self.sheet.cell(row=current_row, column=21).value = self.unique
 
-        self.wb.save('G:\\Finance software\\Database\\newLoan.xlsx') 
+        self.wb.save('G:\\Finance software\\Database\\newLoan.xlsx')
+        
 
 
 
@@ -515,6 +539,8 @@ class NewLoan(File):
         self.CustToUid.write("/n")
 
         self.CustToUid.close()
+
+        self.newChart()
         
         
         
@@ -571,7 +597,7 @@ class NewLoan(File):
 
 
     def brokerFileSetup(self):
-        self.wb = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+        self.wb = load_workbook('G:\\Finance software\\Database\\BrokerBasics.xlsx')
         self.sheet_broker = self.wb.active
 
         self.sheet_broker.column_dimensions['A'].width = 30
@@ -602,7 +628,7 @@ class NewLoan(File):
 
         
     def brokerData(self,brokername,loan_amount):
-        self.wb = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+        self.wb = load_workbook('G:\\Finance software\\Database\\BrokerBasics.xlsx')
         self.sheet_broker = self.wb.active
 
         maxcol = sheet.max_column
@@ -619,20 +645,66 @@ class NewLoan(File):
                 self.sheet_broker.cell(row=i, column=6).value +=loan_amount
                 self.sheet_broker.cell(row=i, column=8).value +=loan_amount
                 count = 1
+                self.wb.save('G:\\Finance software\\Database\\BrokerBasics.xlsx') 
+                break
         if(count == 0):
             print("No such Borker Found!!")
+        
                 
                 
 
 
         
+    
+     
+
     def newChart(self):
-        d = 1
+        book = Workbook()
+        sheet = book.active
+        sheet['A1'] = "Name :- "+self.k11
+        sheet['C1'] = "Ph.No :- "+self.k13
+        sheet['A2'] = "Address :- "+self.k21
+        sheet['A3'] = "Loan Date :- "+self.k51
+        sheet['C3'] = "Loan Amount :- "+self.k52
+        sheet['E3'] = "Broker :- "+self.k53
+        sheet['A4'] = "Veh. No :- "+self.k63
+        sheet['A5'] = "Chart Months :- "+self.k71
+        sheet['C5'] = "Interest Rate :- "+self.k72
+        sheet['E5'] = "Deposit :- "+self.k73
+        sheet['A6'] = "RC - No :- "+self.k91
+
+        sheet['A8'] = "Months"
+        sheet['B8'] = "Amount Per Month"
+        sheet['C8'] = "Status"
+        sheet['D8'] = "Date"
+
+
+        uid = self.unique
+        l = self.l3
+        a = "A"
+        b = "B"
+        c = "C"
+        d = "D"
+        j = 0
+        for i in range(9,len(l)+9):
+            sheet[a+str(i)] = str(l[j][0])+"."+str(l[j][1])+"."+str(l[j][2])
+            sheet[b+str(i)] = (int(self.k52)*float(self.k72))/int(self.k71)
+            sheet[c+str(i)] = "Unpaid"
+            sheet[d+str(i)] = "Unpaid"
+            j+=1
+            
+
         
+        d = 1
+        book.save("G:\\Finance software\\Database\\CustomerCharts\\"+str(uid)+".xlsx")   
 
 
 
     def monthDataFileSetup(self,monthYear):
+        book = workbook()
+        sheet = book.active
+
+        
         d = 1
 
         
