@@ -28,7 +28,7 @@ class Settle(File):
 
         
 
-        self.buttonSettle = tk.Button(self, text="SAVE", fg="green",width=20)
+        self.buttonSettle = tk.Button(self, text="SETTLE", fg="green",width=20)
         self.buttonSettle.grid(row=1,column=4)
         self.buttonSettle.config(command = self.settlefile)
 
@@ -64,6 +64,28 @@ class Settle(File):
                 self.FileOpenCust.write(json.dumps(self.d))
                 self.FileOpenCust.write("/n")
                 self.FileOpenCust.close()
+
+        def settle(self):
+
+            self.wb_cust = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+
+            self.sheet_custuid = self.wb_cust.active
+
+            
+            maxcol = self.sheet_custuid.max_column
+            maxrow = self.sheet_custuid.max_row
+
+            for i in range(1,maxrow+1):
+                cell_obj = self.sheet_custuid.cell(row=i,column=14)
+                if(str(cell_obj.value)==self.setk11):
+                    cell_obj_uid = self.sheet_custuid.cell(row=i,column=21)
+                    uid = cell_obj_uid.value()
+
+                    self.wb_file = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+                    
+
+            
+            
         
             
             
