@@ -16,7 +16,7 @@ class Settle(File):
         File.__init__(self, *args)
 
 
-        self.labeljName = tk.Label(self, text="New Loan",bg="black",fg="white",height=4)
+        self.labeljName = tk.Label(self, text="Settle File",bg="black",fg="white",height=4)
         self.labeljName.grid(row=0,column=3,padx=(200,0))
 
         self.SetVehNo = tk.Label(self, text="VehNo:-",bg="black",fg="white",height=4)
@@ -47,7 +47,7 @@ class Settle(File):
 
 
         self.buttonSettle = tk.Button(self, text="SETTLE", fg="green",width=20)
-        self.buttonSettle.grid(row=1,column=4)
+        self.buttonSettle.grid(row=3,column=4)
         self.buttonSettle.config(command = self.settle)
 
 
@@ -123,6 +123,7 @@ class Settle(File):
 
                 break
 
+        self.cancel()
         
 
     def settlefile(self):
@@ -156,6 +157,12 @@ class Settle(File):
                 self.FileOpenCust.write(json.dumps(self.d))
                 self.FileOpenCust.write("/n")
                 self.FileOpenCust.close()
+
+
+    def cancel(self):
+        self.e11.delete(0,'end')
+        self.e12.delete(0,'end')
+        self.e13.delete(0,'end')
 
 
         
