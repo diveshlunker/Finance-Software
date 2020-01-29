@@ -12,7 +12,7 @@ import time
 
 class File(tk.Frame):
     def __init__(self, *args):
-        tk.Frame.__init__(self, *args,bg="#101010")
+        tk.Frame.__init__(self, *args)
     def show(self):
         self.lift()
 
@@ -75,11 +75,11 @@ class NewLoan(File):
 
 
 
-        self.labeljName = tk.Label(self, text="New Loan",bg="#101010",fg="white",height=4)
+        self.labeljName = tk.Label(self, text="New Loan",height=4)
         self.labeljName.grid(row=0,column=3,padx=(200,0))
 
         #--------------------Line 1 - 3 inputs - name,fname,phno---------------------------
-        self.labelName = tk.Label(self, text="Name:-",bg="#101010",fg="white",height=4)
+        self.labelName = tk.Label(self, text="Name:-",height=4)
         self.labelName.grid(row=1,column=1,padx=(100,0))
         self.e11 = tk.Entry(self,width=30)
         self.e11.grid(row=1,column=2)
@@ -88,7 +88,7 @@ class NewLoan(File):
         self.tke11.set('Nothing is done yet!')
 
         
-        self.labelFname = tk.Label(self, text="Fathers/Husbands Name:-",bg="#101010",fg="white")
+        self.labelFname = tk.Label(self, text="Fathers/Husbands Name:-")
         self.labelFname.grid(row=1,column=3,padx=(100,0))
         self.e12 = tk.Entry(self,width=30)
         self.e12.grid(row=1,column=4)
@@ -96,7 +96,7 @@ class NewLoan(File):
         self.tke12 = tk.StringVar()  # create tk string variable
         self.tke12.set('Nothing is done yet!')
 
-        self.labelPhNo = tk.Label(self, text="Phone No:-",bg="#101010",fg="white")
+        self.labelPhNo = tk.Label(self, text="Phone No:-")
         self.labelPhNo.grid(row=1,column=5,padx=(100,0))
         self.e13 = tk.Entry(self,width=30)
         self.e13.grid(row=1,column=6)
@@ -106,7 +106,7 @@ class NewLoan(File):
 
         #------------------------Line 2 - 1 input - addr line 1,2---------------------------
 
-        self.labelAddr1 = tk.Label(self, text="Address:-",bg="#101010",fg="white",height=4)
+        self.labelAddr1 = tk.Label(self, text="Address:-",height=4)
         self.labelAddr1.grid(row=4,column=1,padx=(200,0))
         self.e21 = tk.Entry(self,width=60)
         self.e21.grid(row=4,column=2,columnspan=2)
@@ -116,7 +116,7 @@ class NewLoan(File):
 
         #----------------------------Line 3 - Guarantee Details----------------------------
 
-        self.labelGName = tk.Label(self, text="Gaureenter Name:-",bg="#101010",fg="white",height=4)
+        self.labelGName = tk.Label(self, text="Gaureenter Name:-",height=4)
         self.labelGName.grid(row=3,column=1,padx=(100,0))
         self.e31 = tk.Entry(self,width=30)
         self.e31.grid(row=3,column=2)
@@ -124,7 +124,7 @@ class NewLoan(File):
         self.tke31 = tk.StringVar()  # create tk string variable
         self.tke31.set('Nothing is done yet!')
         
-        self.labelGFname = tk.Label(self, text="Gaureenter Fathers/Husbands Name:-",bg="#101010",fg="white")
+        self.labelGFname = tk.Label(self, text="Gaureenter Fathers/Husbands Name:-")
         self.labelGFname.grid(row=3,column=3,padx=(100,0))
         self.e32 = tk.Entry(self,width=30)
         self.e32.grid(row=3,column=4)
@@ -132,7 +132,7 @@ class NewLoan(File):
         self.tke32 = tk.StringVar()  # create tk string variable
         self.tke32.set('Nothing is done yet!')
 
-        self.labelGPhNo = tk.Label(self, text="Gaureenter Phone No:-",bg="#101010",fg="white")
+        self.labelGPhNo = tk.Label(self, text="Gaureenter Phone No:-")
         self.labelGPhNo.grid(row=3,column=5,padx=(100,0))
         self.e33 = tk.Entry(self,width=30)
         self.e33.grid(row=3,column=6)
@@ -142,7 +142,7 @@ class NewLoan(File):
 
         #------------------------Line 4 - 2 input - Gaddr line 1,2---------------------------
 
-        self.labelGAddr1 = tk.Label(self, text="Gaureenter Address:-",bg="#101010",fg="white",height=4)
+        self.labelGAddr1 = tk.Label(self, text="Gaureenter Address:-",height=4)
         self.labelGAddr1.grid(row=4,column=4)
         self.e41 = tk.Entry(self,width=60)
         self.e41.grid(row=4,column=5,columnspan=2)
@@ -152,7 +152,7 @@ class NewLoan(File):
 
         #----------------------------Line 5 - Loan Details----------------------------
 
-        self.labelDate = tk.Label(self, text="Loan Date:-",bg="#101010",fg="white",height=4)
+        self.labelDate = tk.Label(self, text="Loan Date:-",height=4)
         self.labelDate.grid(row=5,column=1,padx=(100,0))
         self.e51 = tk.Entry(self,width=30)
         self.e51.grid(row=5,column=2)
@@ -160,7 +160,7 @@ class NewLoan(File):
         self.tke51 = tk.StringVar()  # create tk string variable
         self.tke51.set('Nothing is done yet!')
         
-        self.labelAmount = tk.Label(self, text="Amount:-",bg="#101010",fg="white")
+        self.labelAmount = tk.Label(self, text="Amount:-")
         self.labelAmount.grid(row=5,column=3,padx=(100,0))
         self.e52 = tk.Entry(self,width=30)
         self.e52.grid(row=5,column=4)
@@ -168,7 +168,7 @@ class NewLoan(File):
         self.tke52 = tk.StringVar()  # create tk string variable
         self.tke52.set('Nothing is done yet!')
 
-        self.labelBroker = tk.Label(self, text="Broker:-",bg="#101010",fg="white")
+        self.labelBroker = tk.Label(self, text="Broker:-")
         self.labelBroker.grid(row=5,column=5,padx=(100,0))
         self.e53 = tk.Entry(self,width=30)
         self.e53.grid(row=5,column=6)
@@ -178,7 +178,7 @@ class NewLoan(File):
 
         #----------------------------Line 6 - Vehicle Info----------------------------
 
-        self.labelMake = tk.Label(self, text="Make:-",bg="#101010",fg="white",height=4)
+        self.labelMake = tk.Label(self, text="Make:-",height=4)
         self.labelMake.grid(row=6,column=1,padx=(100,0))
         self.e61 = tk.Entry(self,width=30)
         self.e61.grid(row=6,column=2)
@@ -186,7 +186,7 @@ class NewLoan(File):
         self.tke61 = tk.StringVar()  # create tk string variable
         self.tke61.set('Nothing is done yet!')
         
-        self.labelModel = tk.Label(self, text="Model:-",bg="#101010",fg="white")
+        self.labelModel = tk.Label(self, text="Model:-")
         self.labelModel.grid(row=6,column=3,padx=(100,0))
         self.e62 = tk.Entry(self,width=30)
         self.e62.grid(row=6,column=4)
@@ -194,7 +194,7 @@ class NewLoan(File):
         self.tke62 = tk.StringVar()  # create tk string variable
         self.tke62.set('Nothing is done yet!')
 
-        self.labelVehNo = tk.Label(self, text="Vehicle No:-",bg="#101010",fg="white")
+        self.labelVehNo = tk.Label(self, text="Vehicle No:-")
         self.labelVehNo.grid(row=6,column=5,padx=(100,0))
         self.e63 = tk.Entry(self,width=30)
         self.e63.grid(row=6,column=6)
@@ -204,7 +204,7 @@ class NewLoan(File):
 
         #----------------------------Line 7 - Inputs on Loan----------------------------
 
-        self.labelChart = tk.Label(self, text="Chart Months:-",bg="#101010",fg="white",height=4)
+        self.labelChart = tk.Label(self, text="Chart Months:-",height=4)
         self.labelChart.grid(row=7,column=1,padx=(100,0))
         self.e71 = tk.Entry(self,width=30)
         self.e71.grid(row=7,column=2)
@@ -212,7 +212,7 @@ class NewLoan(File):
         self.tke71 = tk.StringVar()  # create tk string variable
         self.tke71.set('Nothing is done yet!')
         
-        self.labelInterest = tk.Label(self, text="Interest Rate:-",bg="#101010",fg="white")
+        self.labelInterest = tk.Label(self, text="Interest Rate:-")
         self.labelInterest.grid(row=7,column=3,padx=(100,0))
         self.e72 = tk.Entry(self,width=30)
         self.e72.grid(row=7,column=4)
@@ -220,7 +220,7 @@ class NewLoan(File):
         self.tke72 = tk.StringVar()  # create tk string variable
         self.tke72.set('Nothing is done yet!')
 
-        self.labelDepo = tk.Label(self, text="Deposit:-",bg="#101010",fg="white")
+        self.labelDepo = tk.Label(self, text="Deposit:-")
         self.labelDepo.grid(row=7,column=5,padx=(100,0))
         self.e73 = tk.Entry(self,width=30)
         self.e73.grid(row=7,column=6)
@@ -231,7 +231,7 @@ class NewLoan(File):
 
         #----------------------------Line 8 - Documents----------------------------
 
-        self.labelNoDocs = tk.Label(self, text="No.of Docs:-",bg="#101010",fg="white",height=4)
+        self.labelNoDocs = tk.Label(self, text="No.of Docs:-",height=4)
         self.labelNoDocs.grid(row=8,column=1,padx=(100,0))
         self.e81 = tk.Entry(self,width=30)
         self.e81.grid(row=8,column=2)
@@ -239,7 +239,7 @@ class NewLoan(File):
         self.tke81 = tk.StringVar()  # create tk string variable
         self.tke81.set('Nothing is done yet!')
 
-        self.labelDocs = tk.Label(self, text="Documents List:-",bg="#101010",fg="white",height=4)
+        self.labelDocs = tk.Label(self, text="Documents List:-",height=4)
         self.labelDocs.grid(row=9,column=1,padx=(200,0))
         self.e82 = tk.Entry(self,width=60)
         self.e82.grid(row=9,column=2,columnspan=2)
@@ -249,7 +249,7 @@ class NewLoan(File):
 
         #----------------------------Line 9 - RC.No----------------------------
 
-        self.labelRC = tk.Label(self, text="RC No:-",bg="#101010",fg="white",height=4)
+        self.labelRC = tk.Label(self, text="RC No:-",height=4)
         self.labelRC.grid(row=10,column=1,padx=(100,0))
         self.e91 = tk.Entry(self,width=30)
         self.e91.grid(row=10,column=2)
@@ -269,7 +269,8 @@ class NewLoan(File):
         self.buttonCancel.config(command = self.canceldata)
 
         #------------------------Opening File in append mode--------------------
-        self.FileOpen = open("Database/LoanFile/loanfile.txt","a+") 
+
+        #self.FileOpen = open("Database/LoanFile/loanfile.txt","a+") 
         
         self.d={}
 

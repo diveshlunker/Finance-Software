@@ -58,7 +58,7 @@ class MainView(tk.Frame):
 
         editMenu = tk.Menu(menu)
         menu.add_cascade(label="Edit", menu=editMenu)
-        editMenu.add_command(label="Chart",command=EditChart.lift)
+        #editMenu.add_command(label="Chart",command=EditChart.lift)
         editMenu.add_command(label="loan-amount",command=EditLoanAmt.lift)
         editMenu.add_command(label="Receipts",command=EditReceipts.lift)
         editMenu.add_command(label="Broker File",command=EditBroker.lift)
