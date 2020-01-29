@@ -1,6 +1,7 @@
 import tkinter as tk
 import openpyxl
 from Edits.LoanAmount import LoanAmt
+from Edits.Receipts import Receipt
 
 class Edit(tk.Frame):
     def __init__(self, *args):
@@ -18,11 +19,7 @@ class Chart(Edit):
 
 
 
-class Receipt(Edit):
-   def __init__(self, *args):
-       Edit.__init__(self, *args)
-       label = tk.Label(self, text="EditReceipts")
-       label.pack(side="top", fill="both", expand=True)
+
 
 
 class Broker(Edit):
