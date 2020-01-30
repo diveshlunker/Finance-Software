@@ -38,6 +38,7 @@ class Receipt(Edit):
         self.tke11.set(self.e11.get())
         self.setk11 = self.tke11.get()
 
+
         self.wb_cust = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
 
         self.sheet_cust = self.wb_cust.active
@@ -46,9 +47,13 @@ class Receipt(Edit):
         maxrow = self.sheet_cust.max_row
         c=0
         for i in range(1,maxrow+1):
+            
             cell_obj = self.sheet_cust.cell(row = i,column = 14)
             print(str(cell_obj.value))
             if(str(cell_obj.value)==str(self.setk11)):
+                print("dinve")
+
+                
                 self.row = i
                 
                 self.PrevInvoiceAmt = tk.Label(self, text="Previous Invoice Amount:-",height=4)
@@ -90,4 +95,74 @@ class Receipt(Edit):
             self.SetAmount.grid(row=2,column=3,padx=(200,0))
 
     def changeInvoice(self):
-        pass
+        self.wb_cust = load_workbook('G:\\Finance software\\Database\\newLoan.xlsx')
+        
+        self.unique_id = self.sheet_cust.cell(row=self.row,column=21).value
+        self.broker_name = self.sheet_cust.cell(row=self.row,column=11).value
+        self.chart_months = self.sheet_cust.cell(row=self.row,column=15).value
+
+        self.tke12.set(self.e12.get())
+        self.setk12 = self.tke12.get()
+
+        self.tke13.set(self.e13.get())
+        self.setk13 = self.tke13.get()
+        
+
+
+        self.tke14.set(self.e14.get())
+        self.setk14 = self.tke14.get()
+
+        self.tke15.set(self.e15.get())
+        self.setk15 = self.tke15.get()
+
+
+
+        self.wb_broker = load_workbook('G:\\Finance software\\Database\\BrokerBasics.xlsx')
+        self.sheet_broker = self.wb_broker.active
+
+        maxcol = self.sheet_broker.max_column
+        maxrow = self.sheet_broker.max_row
+
+        
+        count = 0
+
+        
+        for i in range(1,maxrow+1):
+            cell_obj = self.sheet_broker.cell(row=i,column=1)
+            print(cell_obj.value)
+            if(str(cell_obj.value)==self.broker_name):
+                self.sheet_broker.cell(row=i,column=2).value -=int(self.setk12)
+                self.sheet_broker.cell(row=i,column=2).value +=int(self.setk15)
+                count = 1
+                self.wb_broker.save('G:\\Finance software\\Database\\BrokerBasics.xlsx') 
+                break
+        if(count == 0):
+            print("No such Borker Found!!")
+
+
+        self.wb_chart = load_workbook('G:\\Finance software\\Database\\CustomerCharts\\'+str(self.unique_id)+'.xlsx')
+        self.sheet_chart = self.wb_chart.active
+        c=0
+        for i in range(9+int(self.chart_months)-1,8,-1):
+            if(str(self.sheet_chart.cell(row=i,column=3).value)=="Paid" or str(self.sheet_chart.cell(row=i,column=3).value)=="Settled" and c==0):
+                print(i)
+                c+=1
+            elif(str(self.sheet_chart.cell(row=i,column=3).value)=="Paid" or str(self.sheet_chart.cell(row=i,column=3).value)=="Settled" and c!=0 and c<int(self.setk13)):
+                print(i)
+                c+=1
+            else:
+                start = i
+                break
+
+        for i in range(start+1,start+int(self.setk15)+1):
+            self.sheet_chart.cell(row=i,column=3).value = "Paid"
+            print("Line",i)
+
+        self.wb_chart.save("G:\\Finance software\\Database\\CustomerCharts\\"+str(self.unique_id)+".xlsx")
+
+
+
+
+
+
+

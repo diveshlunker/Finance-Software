@@ -61,8 +61,8 @@ class MainView(tk.Frame):
         #editMenu.add_command(label="Chart",command=EditChart.lift)
         editMenu.add_command(label="loan-amount",command=EditLoanAmt.lift)
         editMenu.add_command(label="Receipts",command=EditReceipts.lift)
-        editMenu.add_command(label="Broker File",command=EditBroker.lift)
-        editMenu.add_command(label="Cash with broker",command=EditCashBrok.lift)
+        #        editMenu.add_command(label="Broker File",command=EditBroker.lift)
+        editMenu.add_command(label="Broker File",command=EditCashBrok.lift)
         editMenu.add_separator()
         editMenu.add_command(label="Exit", command=p1.lift)
 

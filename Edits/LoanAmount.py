@@ -142,6 +142,6 @@ class LoanAmt(Edit):
         
         self.wb_chart.save("G:\\Finance software\\Database\\CustomerCharts\\"+str(self.unique_id)+".xlsx")
         
-       
+        
 
         
