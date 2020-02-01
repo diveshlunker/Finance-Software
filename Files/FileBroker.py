@@ -5,7 +5,7 @@ import os
 
 class File(tk.Frame):
     def __init__(self, *args):
-        tk.Frame.__init__(self, *args,bg="black")
+        tk.Frame.__init__(self, *args)
     def show(self):
         self.lift()
 
@@ -17,20 +17,20 @@ class NewBroker(File):
         
         File.__init__(self, *args)
        
-        self.labeljName = tk.Label(self, text="New Broker",bg="black",fg="white",height=4)
+        self.labeljName = tk.Label(self, text="New Broker",height=4)
         self.labeljName.grid(row=0,column=4)
 
-        self.SetName = tk.Label(self, text="Name:-",bg="black",fg="white",height=4)
+        self.SetName = tk.Label(self, text="Name:-",height=4)
         self.SetName.grid(row=1,column=3,padx=(200,0))
         self.b11 = tk.Entry(self,width=30)
         self.b11.grid(row=1,columnspan=2,column=4,padx=(50,0))
 
-        self.SetAddress = tk.Label(self, text="Address:-",bg="black",fg="white",height=4)
+        self.SetAddress = tk.Label(self, text="Address:-",height=4)
         self.SetAddress.grid(row=2,column=3,padx=(200,0))
         self.b12 = tk.Entry(self,width=30)
         self.b12.grid(row=2,columnspan=2,column=4,padx=(50,0))
 
-        self.SetCash = tk.Label(self, text="Cash Given:-",bg="black",fg="white",height=4)
+        self.SetCash = tk.Label(self, text="Cash Given:-",height=4)
         self.SetCash.grid(row=3,column=3,padx=(200,0))
         self.b13 = tk.Entry(self,width=30)
         self.b13.grid(row=3,columnspan=2,column=4,padx=(50,0))

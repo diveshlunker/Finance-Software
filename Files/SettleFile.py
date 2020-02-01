@@ -7,7 +7,7 @@ from openpyxl import *
 
 class File(tk.Frame):
     def __init__(self, *args):
-        tk.Frame.__init__(self, *args,bg="black")
+        tk.Frame.__init__(self, *args)
     def show(self):
         self.lift()
             
@@ -16,10 +16,10 @@ class Settle(File):
         File.__init__(self, *args)
 
 
-        self.labeljName = tk.Label(self, text="Settle File",bg="black",fg="white",height=4)
+        self.labeljName = tk.Label(self, text="Settle File",height=4)
         self.labeljName.grid(row=0,column=3,padx=(200,0))
 
-        self.SetVehNo = tk.Label(self, text="VehNo:-",bg="black",fg="white",height=4)
+        self.SetVehNo = tk.Label(self, text="VehNo:-",height=4)
         self.SetVehNo.grid(row=1,column=1,padx=(200,0))
         self.e11 = tk.Entry(self,width=30)
         self.e11.grid(row=1,columnspan=2,column=2)
@@ -28,7 +28,7 @@ class Settle(File):
         self.tke11.set('Nothing is done yet!')
 
 
-        self.SetDate = tk.Label(self, text="Settling Date:-",bg="black",fg="white",height=4)
+        self.SetDate = tk.Label(self, text="Settling Date:-",height=4)
         self.SetDate.grid(row=2,column=1,padx=(200,0))
         self.e12 = tk.Entry(self,width=30)
         self.e12.grid(row=2,columnspan=2,column=2)
@@ -36,7 +36,7 @@ class Settle(File):
         self.tke12 = tk.StringVar()  # create tk string variable
         self.tke12.set('Nothing is done yet!')
 
-        self.SetAmount = tk.Label(self, text="Settling Amount:-",bg="black",fg="white",height=4)
+        self.SetAmount = tk.Label(self, text="Settling Amount:-",height=4)
         self.SetAmount.grid(row=3,column=1,padx=(200,0))
         self.e13 = tk.Entry(self,width=30)
         self.e13.grid(row=3,columnspan=2,column=2)

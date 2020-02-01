@@ -2,7 +2,7 @@ import tkinter as tk
 
 class File(tk.Frame):
     def __init__(self, *args):
-        tk.Frame.__init__(self, *args,bg="black")
+        tk.Frame.__init__(self, *args)
     def show(self):
         self.lift()
         
