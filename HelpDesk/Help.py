@@ -1,5 +1,6 @@
 import tkinter as tk
-
+import webbrowser
+from HelpDesk.Licence import Licence
 
 class Help(tk.Frame):
     def __init__(self, *args):
@@ -19,11 +20,9 @@ class Features(Help):
        label = tk.Label(self, text="Features")
        label.pack(side="top", fill="both", expand=True)
 
-class Licence(Help):
-   def __init__(self, *args):
-       Help.__init__(self, *args)
-       label = tk.Label(self, text="Licence")
-       label.pack(side="top", fill="both", expand=True)
+
+       
+       
 
 
 class Terms(Help):

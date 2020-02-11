@@ -13,6 +13,7 @@ from Reports.Report import *
 from Settings.Setting import *
 from HelpDesk.Help import *
 from openpyxl import *
+import webbrowser
 
 #----------------------------------Base of the software------------------------------------
 class MainView(tk.Frame):
